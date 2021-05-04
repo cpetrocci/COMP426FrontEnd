@@ -23,7 +23,7 @@ const SignUpForm = ({ signedUp }) => {
         }
         const res = await axios({
             method: 'post',
-            url: 'http://localhost:8080/user',
+            url: 'https://colepetrocci.pythonanywhere.com/user',
             data: {
                 username: userText,
                 password: passwordText

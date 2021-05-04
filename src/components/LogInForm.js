@@ -16,7 +16,7 @@ const LoginForm = ({logIn}) => {
         }
         const res = await axios({
             method: 'get',
-            url: 'http://localhost:8080/user/' + userText,
+            url: 'https://colepetrocci.pythonanywhere.com/user/' + userText,
         }).catch(err => {console.log(err)});
         if(res != null) {
             if (res.data.username === userText && res.data.password === passwordText) {

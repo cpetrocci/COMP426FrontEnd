@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react'
 import SignUpForm from './components/SignUpForm';
 import axios from 'axios'
@@ -22,10 +21,21 @@ function App() {
   const [species, setSpecies] = useState([]);
   const [planets, setPlanets] = useState([]);
 
+  const testSite = async () => {
+    await axios({
+      method: 'post',
+      url: 'https://colepetrocci.pythonanywhere.com/user',
+      data: {
+          username: "test",
+          password: "test"
+      }
+  })
+  }
+
   const getTheme = async (tid) => {
     const res = await axios({
       method: 'get',
-      url: 'http://localhost:8080/theme/' + tid
+      url: 'https://colepetrocci.pythonanywhere.com/theme/' + tid
     });
     return res.data;
   }
@@ -33,7 +43,7 @@ function App() {
   const updateUser = async () => {
     const res = await axios({
       method: 'get',
-      url: 'http://localhost:8080/user/' + user.username
+      url: 'https://colepetrocci.pythonanywhere.com/user/' + user.username
     })
     setUser(res.data);
   }
@@ -41,7 +51,7 @@ function App() {
   const signedUp = async ({ userText, tid }) => {
     const res = await axios({
       method: 'get',
-      url: 'http://localhost:8080/user/' + userText
+      url: 'https://colepetrocci.pythonanywhere.com/user/' + userText
     });
     await updateUserTheme(userText, tid);
     setTheme(await getTheme(tid));
@@ -53,7 +63,7 @@ function App() {
   const logIn = async (userText) => {
     const res = await axios({
       method: 'get',
-      url: 'http://localhost:8080/user/' + userText,
+      url: 'https://colepetrocci.pythonanywhere.com/user/' + userText,
     });
     setTheme(await getTheme(res.data.tid));
     setFavorites(await getFavorites(res.data.id));
@@ -64,7 +74,7 @@ function App() {
   const updateUserTheme = async (userText, tid) => {
     await axios({
       method: 'put',
-      url: 'http://localhost:8080/user/' + userText,
+      url: 'https://colepetrocci.pythonanywhere.com/user/' + userText,
       data: {
         tid: tid
       }
@@ -169,7 +179,7 @@ function App() {
   const getFavorites = async(id) => {
     const res = await axios({
       method: 'get',
-      url: 'http://localhost:8080/favorites/' + id
+      url: 'https://colepetrocci.pythonanywhere.com/favorites/' + id
     })
     return res.data;
   }
@@ -177,7 +187,7 @@ function App() {
   const updateCharacter = async(fav) => {
     await axios({
       method: 'put',
-      url: 'http://localhost:8080/favorites/' + user.id,
+      url: 'https://colepetrocci.pythonanywhere.com/favorites/' + user.id,
       data: {
         "character": fav,
         "film": favorites.film === null ? null: favorites.film,
@@ -192,7 +202,7 @@ function App() {
   const updateFilm = async(fav) => {
     await axios({
       method: 'put',
-      url: 'http://localhost:8080/favorites/' + user.id,
+      url: 'https://colepetrocci.pythonanywhere.com/favorites/' + user.id,
       data: {
         "character": favorites.character === null ? null: favorites.character,
         "film": fav,
@@ -207,7 +217,7 @@ function App() {
   const updateStarship = async(fav) => {
     await axios({
       method: 'put',
-      url: 'http://localhost:8080/favorites/' + user.id,
+      url: 'https://colepetrocci.pythonanywhere.com/favorites/' + user.id,
       data: {
         "character": favorites.character === null ? null: favorites.character,
         "film": favorites.film === null ? null: favorites.film,
@@ -222,7 +232,7 @@ function App() {
   const updateVehicle = async(fav) => {
     await axios({
       method: 'put',
-      url: 'http://localhost:8080/favorites/' + user.id,
+      url: 'https://colepetrocci.pythonanywhere.com/favorites/' + user.id,
       data: {
         "character": favorites.character === null ? null: favorites.character,
         "film": favorites.film === null ? null: favorites.film,
@@ -237,7 +247,7 @@ function App() {
   const updateSpecies = async(fav) => {
     await axios({
       method: 'put',
-      url: 'http://localhost:8080/favorites/' + user.id,
+      url: 'https://colepetrocci.pythonanywhere.com/favorites/' + user.id,
       data: {
         "character": favorites.character === null ? null: favorites.character,
         "film": favorites.film === null ? null: favorites.film,
@@ -252,7 +262,7 @@ function App() {
   const updatePlanet = async(fav) => {
     await axios({
       method: 'put',
-      url: 'http://localhost:8080/favorites/' + user.id,
+      url: 'https://colepetrocci.pythonanywhere.com/favorites/' + user.id,
       data: {
         "character": favorites.character === null ? null: favorites.character,
         "film": favorites.film === null ? null: favorites.film,
@@ -267,6 +277,7 @@ function App() {
 
   useEffect(() => {
     (async () => {
+      await testSite()
       await getSWCharacters('https://swapi.dev/api/people/', [], 2)
       await getSWFilms('https://swapi.dev/api/films/', [], 2)
       await getSWStarships('https://swapi.dev/api/starships/', [], 2)
