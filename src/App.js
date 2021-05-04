@@ -88,7 +88,7 @@ function App() {
     setFavorites(null);
   }
 
-  const getSWCharacters = async (url, arr) => {
+  const getSWCharacters = async (url, arr, int) => {
     const res = await axios({
       method: 'get',
       url: url
@@ -98,9 +98,10 @@ function App() {
       setCharacters(arr);
       return;
     }
-    getSWCharacters(res.data.next, arr);
+    let newUrl = 'https://swapi.dev/api/people/?page=' + int;
+    getSWCharacters(newUrl, arr, int+ 1);
   }
-  const getSWFilms = async (url, arr) => {
+  const getSWFilms = async (url, arr, int) => {
     const res = await axios({
       method: 'get',
       url: url
@@ -110,9 +111,10 @@ function App() {
       setFilms(arr);
       return;
     }
-    getSWFilms(res.data.next, arr);
+    let newUrl = 'https://swapi.dev/api/people/?page=' + int;
+    getSWFilms(newUrl, arr, int + 1);
   }
-  const getSWStarships = async (url, arr) => {
+  const getSWStarships = async (url, arr, int) => {
     const res = await axios({
       method: 'get',
       url: url
@@ -122,9 +124,10 @@ function App() {
       setStarships(arr);
       return;
     }
-    getSWStarships(res.data.next, arr);
+    let newUrl = 'https://swapi.dev/api/people/?page=' + int;
+    getSWStarships(newUrl, arr, int + 1);
   }
-  const getSWVehicles = async (url, arr) => {
+  const getSWVehicles = async (url, arr, int) => {
     const res = await axios({
       method: 'get',
       url: url
@@ -134,9 +137,10 @@ function App() {
       setVehicles(arr);
       return;
     }
-    getSWVehicles(res.data.next, arr);
+    let newUrl = 'https://swapi.dev/api/people/?page=' + int;
+    getSWVehicles(newUrl, arr, int + 1);
   }
-  const getSWSpecies = async (url, arr) => {
+  const getSWSpecies = async (url, arr, int) => {
     const res = await axios({
       method: 'get',
       url: url
@@ -146,9 +150,10 @@ function App() {
       setSpecies(arr);
       return;
     }
-    getSWSpecies(res.data.next, arr);
+    let newUrl = 'https://swapi.dev/api/people/?page=' + int;
+    getSWSpecies(newUrl, arr, int + 1);
   }
-  const getSWPlanets = async (url, arr) => {
+  const getSWPlanets = async (url, arr, int) => {
     const res = await axios({
       method: 'get',
       url: url
@@ -158,7 +163,10 @@ function App() {
       setPlanets(arr);
       return;
     }
-    getSWPlanets(res.data.next, arr);
+    console.log(res.data.next)
+    let newUrl = 'https://swapi.dev/api/people/?page=' + int;
+    console.log(newUrl);
+    getSWPlanets(newUrl, arr, int + 1);
   }
   const getFavorites = async(id) => {
     const res = await axios({
@@ -261,12 +269,12 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      await getSWCharacters('https://swapi.dev/api/people/', [])
-      await getSWFilms('https://swapi.dev/api/films/', [])
-      await getSWStarships('https://swapi.dev/api/starships/', [])
-      await getSWVehicles('https://swapi.dev/api/vehicles/', [])
-      await getSWSpecies('https://swapi.dev/api/species/', [])
-      await getSWPlanets('https://swapi.dev/api/planets/', [])
+      await getSWCharacters('https://swapi.dev/api/people/', [], 2)
+      await getSWFilms('https://swapi.dev/api/films/', [], 2)
+      await getSWStarships('https://swapi.dev/api/starships/', [], 2)
+      await getSWVehicles('https://swapi.dev/api/vehicles/', [], 2)
+      await getSWSpecies('https://swapi.dev/api/species/', [], 2)
+      await getSWPlanets('https://swapi.dev/api/planets/', [], 2)
   })()}, [])
 
   return (
