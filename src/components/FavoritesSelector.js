@@ -55,7 +55,13 @@ const FavoritesSelector = ({ currentFavorite, list, updateFavorites, type, theme
               placeholder={type.includes('Species') ? "Search Species'": 'Search ' + type + 's'} value={text} 
               onChange={(e) => {setText(e.target.value); search(e.target.value)}}
               onKeyDown={(e) => submit(e)}></input>
-              {matches.map((match) => <SearchItem key={match} match={match} onClick={updateText}/>)}
+              {matches.length === 0 ? 
+              <div></div>
+              :
+              matches[0] === 'No Matches' ?
+              <div>No Matches</div>
+              :
+              matches.map((match) => <SearchItem key={match} match={match} onClick={updateText}/>)}
             </div>
           </div>
     )
