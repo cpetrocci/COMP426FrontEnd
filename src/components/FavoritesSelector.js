@@ -30,11 +30,19 @@ const FavoritesSelector = ({ currentFavorite, list, updateFavorites, type, theme
     }
 
     const submit = (e) => {
+        let found = false;
         if (e.keyCode === 13) {
-            updateFavorites(text);
-            setText('');
-            setMatches([]);
-            return;
+            matches.forEach(match => {
+                if (match === text) {
+                    found = true;
+                }
+            })
+            if (found) {
+                updateFavorites(text);
+                setText('');
+                setMatches([]);
+                return;
+            }
         }
     }
 
