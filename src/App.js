@@ -21,16 +21,8 @@ function App() {
   const [species, setSpecies] = useState([]);
   const [planets, setPlanets] = useState([]);
 
-  const testSite = async () => {
-    await axios({
-      method: 'post',
-      url: 'https://colepetrocci.pythonanywhere.com/user',
-      data: {
-          username: "test",
-          password: "test"
-      }
-  })
-  }
+
+
 
   const getTheme = async (tid) => {
     const res = await axios({
@@ -277,7 +269,6 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      await testSite()
       await getSWCharacters('https://swapi.dev/api/people/', [], 2)
       await getSWFilms('https://swapi.dev/api/films/', [], 2)
       await getSWStarships('https://swapi.dev/api/starships/', [], 2)
