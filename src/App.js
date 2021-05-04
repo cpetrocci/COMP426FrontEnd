@@ -111,7 +111,7 @@ function App() {
       setFilms(arr);
       return;
     }
-    let newUrl = 'https://swapi.dev/api/people/?page=' + int;
+    let newUrl = 'https://swapi.dev/api/films/?page=' + int;
     getSWFilms(newUrl, arr, int + 1);
   }
   const getSWStarships = async (url, arr, int) => {
@@ -124,7 +124,7 @@ function App() {
       setStarships(arr);
       return;
     }
-    let newUrl = 'https://swapi.dev/api/people/?page=' + int;
+    let newUrl = 'https://swapi.dev/api/starships/?page=' + int;
     getSWStarships(newUrl, arr, int + 1);
   }
   const getSWVehicles = async (url, arr, int) => {
@@ -137,7 +137,7 @@ function App() {
       setVehicles(arr);
       return;
     }
-    let newUrl = 'https://swapi.dev/api/people/?page=' + int;
+    let newUrl = 'https://swapi.dev/api/vehicles/?page=' + int;
     getSWVehicles(newUrl, arr, int + 1);
   }
   const getSWSpecies = async (url, arr, int) => {
@@ -150,7 +150,7 @@ function App() {
       setSpecies(arr);
       return;
     }
-    let newUrl = 'https://swapi.dev/api/people/?page=' + int;
+    let newUrl = 'https://swapi.dev/api/species/?page=' + int;
     getSWSpecies(newUrl, arr, int + 1);
   }
   const getSWPlanets = async (url, arr, int) => {
@@ -163,9 +163,7 @@ function App() {
       setPlanets(arr);
       return;
     }
-    console.log(res.data.next)
-    let newUrl = 'https://swapi.dev/api/people/?page=' + int;
-    console.log(newUrl);
+    let newUrl = 'https://swapi.dev/api/planets/?page=' + int;
     getSWPlanets(newUrl, arr, int + 1);
   }
   const getFavorites = async(id) => {
