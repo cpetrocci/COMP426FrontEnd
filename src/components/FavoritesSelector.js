@@ -26,12 +26,36 @@ const FavoritesSelector = ({ currentFavorite, list, updateFavorites, type, theme
     }
 
     const updateText = (newText) => {
-        setText(newText);
+        setText('');
         setMatches([]);
+        updateFavorites(newText);
     }
 
-    const submit = (e) => {
+    const submit = (e, bool) => {
         let found = false;
+
+        if (bool) {
+            if (type.includes('Film')) {
+                list.forEach(item => {
+                    if (item.title === text) {
+                        found = true;
+                    }
+                })
+            }
+            else {
+                list.forEach(item => {
+                    if (item.name === text) {
+                        found = true;
+                    }
+                })
+            }
+            if (found) {
+                updateFavorites(text);
+                setText('');
+                setMatches([]);
+            }
+            return;
+        }
         if (e.keyCode === 13) {
             if (type.includes('Film')) {
                 list.forEach(item => {
@@ -64,7 +88,7 @@ const FavoritesSelector = ({ currentFavorite, list, updateFavorites, type, theme
               <input style={{backgroundColor: theme.second, color: 'white'}} className='input' type='text' 
               placeholder={type.includes('Species') ? "Search Species'": 'Search ' + type + 's'} value={text} 
               onChange={(e) => {setText(e.target.value); search(e.target.value)}}
-              onKeyDown={(e) => submit(e)}></input>
+              onKeyDown={(e) => submit(e, false)}></input>
               {matches.length === 0 ? 
               <div></div>
               :
