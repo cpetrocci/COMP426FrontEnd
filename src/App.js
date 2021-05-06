@@ -6,6 +6,7 @@ import LogInForm from './components/LogInForm';
 import Button from './components/Button';
 import FavoritesSelector from './components/FavoritesSelector';
 import SithTranslator from './components/SithTranslator';
+import SingleSearch from './components/SithTranslator';
 
 function App() {
   const [showSignUp, setShowSignUp] = useState(false);
@@ -314,6 +315,7 @@ function App() {
       <div>
         <div className='box'>
           <SithTranslator />
+          {/* <SingleSearch /> */}
           <SignedIn user={user} logOut={logOut}/>
           <h1 className='title is-2' style={{textAlign: 'center'}}>Select all of your favorite things Star Wars!</h1>
           {theme.first.includes('black') ? 

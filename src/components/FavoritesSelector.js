@@ -85,8 +85,7 @@ const FavoritesSelector = ({ currentFavorite, list, updateFavorites, type, theme
             <div className='box' style={{backgroundColor: theme.first, color: 'white'}}>
               <h1 className='title is-6' style={{color: 'white'}}>Favorite {type}:</h1>
               <h1 className='title is-6' style={{color: 'white'}}>{currentFavorite === null ? 'None': currentFavorite}</h1>
-              <input style={{backgroundColor: theme.second, color: 'white'}} className='input' type='text' 
-              placeholder={type.includes('Species') ? "Search Species'": 'Search ' + type + 's'} value={text} 
+              <input style={{backgroundColor: theme.second, color: 'white'}} className='input' type='text'
               onChange={(e) => {setText(e.target.value); search(e.target.value)}}
               onKeyDown={(e) => submit(e, false)}></input>
               {matches.length === 0 ? 
