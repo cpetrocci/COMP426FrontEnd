@@ -27,16 +27,26 @@ const FavoritesSelector = ({ currentFavorite, list, updateFavorites, type, theme
 
     const updateText = (newText) => {
         setText(newText);
+        setMatches([]);
     }
 
     const submit = (e) => {
         let found = false;
         if (e.keyCode === 13) {
-            matches.forEach(match => {
-                if (match === text) {
-                    found = true;
-                }
-            })
+            if (type.includes('Film')) {
+                list.forEach(item => {
+                    if (item.title === text) {
+                        found = true;
+                    }
+                })
+            }
+            else {
+                list.forEach(item => {
+                    if (item.name === text) {
+                        found = true;
+                    }
+                })
+            }
             if (found) {
                 updateFavorites(text);
                 setText('');
