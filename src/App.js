@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import SignUpForm from './components/SignUpForm';
 import axios from 'axios'
-import SignedIn from './components/SignedIn';
 import LogInForm from './components/LogInForm';
 import Button from './components/Button';
 import FavoritesSelector from './components/FavoritesSelector';
@@ -297,11 +296,11 @@ function App() {
                 <div>
                   {showSignUp ? 
                   <div>
-                    <h1 className='title is-1'>Sign Up!</h1>
+                    <h1 className='title is-1' style={{color: 'black'}}>Sign Up!</h1>
                     <SignUpForm signedUp={signedUp}/>
                   </div> : 
                   <div>
-                    <h1 className='title is-1'>Login!</h1>
+                    <h1 className='title is-1' style={{color: 'black'}}>Login!</h1>
                     <LogInForm logIn={logIn}/>
                   </div> }
                 </div> : 
@@ -319,18 +318,23 @@ function App() {
             </div>
         </div>
       </section>: 
-      <div>
+      <div style ={{padding: '20px'}}>
+        <div className='box' style={{backgroundColor: theme.first}}>
+          <div style={{textAlign: 'right'}}>
+            <p className='title is-5' style={{color: theme.text_color}}>Logged in as: {user.username}</p>
+            <Button className='button is-small' onClick={logOut} text='Log Out'/>
+          </div>
+          <div style = {{textAlign: 'right'}}>
+            {theme.first.includes('black') ? 
+            <Button text='Switch to the Light Side' className='button is-small' onClick={async () => { await updateUserTheme(user.username, 2); setTheme(await getTheme(2)); updateUser()}}/>
+            :
+            <Button className='button is-small' text='Switch to the Dark Side' onClick={async () => {await updateUserTheme(user.username, 1); setTheme(await getTheme(1)); updateUser()}}/>}
+          </div>
+        </div>
         <SithTranslator theme={theme}/>
         <SingleSearch characters={characters} planets={planets} films={films} vehicles={vehicles} species={species} starships={starships} theme={theme} />
-        <div className='box' style={{backgroundColor: theme.first}}>
-          <SignedIn user={user} logOut={logOut} theme={theme}/>
-          <h1 className='title is-2' style={{textAlign: 'center', color: theme.text_color}}>Select all of your favorite things Star Wars!</h1>
-          {theme.first.includes('black') ? 
-          <Button text='Switch to the Light Side' className='button is-large' onClick={async () => { await updateUserTheme(user.username, 2); setTheme(await getTheme(2)); updateUser()}}/>
-          :
-          <Button className='button is-large' text='Switch to the Dark Side' onClick={async () => {await updateUserTheme(user.username, 1); setTheme(await getTheme(1)); updateUser()}}/>}
-        </div>
         <div className ='box' style={{backgroundColor: theme.first}}>
+          <h1 className='title is-2' style={{textAlign: 'center', color: theme.text_color}}>Select all of your favorite things Star Wars!</h1>
           <div className='columns is-multiline' style = {{padding: '20px'}}>
             <FavoritesSelector currentFavorite={favorites.character} list={characters} type='Character' theme={theme} updateFavorites={updateCharacter}/>
             <FavoritesSelector currentFavorite={favorites.film} list={films} type='Film' theme={theme} updateFavorites={updateFilm}/>

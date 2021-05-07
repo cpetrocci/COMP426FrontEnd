@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 
-const SearchItem = ({ match, onClick }) => {
+const FavoritesSelectorItem = ({ match, onClick }) => {
     const [stylePadding, setStylePadding] = useState('1px');
     const [styleBorder, setStyleBorder] = useState('');
 
@@ -14,4 +14,4 @@ const SearchItem = ({ match, onClick }) => {
     )
 }
 
-export default SearchItem
+export default FavoritesSelectorItem

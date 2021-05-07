@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import SearchItem from './SearchItem';
+import FavoritesSelectorItem from './FavoritesSelectorItem';
 
 const FavoritesSelector = ({ currentFavorite, list, updateFavorites, type, theme}) => {
     const [text, setText] = useState('');
@@ -95,7 +95,7 @@ const FavoritesSelector = ({ currentFavorite, list, updateFavorites, type, theme
               matches[0] === 'No Matches' ?
               <div>No Matches</div>
               :
-              matches.map((match) => <SearchItem key={match} match={match} onClick={updateText}/>)}
+              matches.map((match) => <FavoritesSelectorItem key={match} match={match} onClick={updateText}/>)}
             </div>
           </div>
     )
