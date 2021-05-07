@@ -207,40 +207,40 @@ const SingleSearch = ({ characters, planets, films, vehicles, species, starships
                 <h1 className='title is-2' style={{textAlign: 'center', color: theme.text_color}}>Character</h1>
                 <div className='container'>
                     <div className='columns is-multiline' style={{color: theme.text_color}}>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Name: {characters[charID].name}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Height: {characters[charID].height}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Mass: {characters[charID].mass}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Hair Color: {characters[charID].hair_color}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Skin Color: {characters[charID].skin_color}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Birth Year: {characters[charID].birth_year}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Gender: {characters[charID].gender}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Home Planet: {findPlanet(characters[charID].homeworld)}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Films: {findFilm(characters[charID].films).map(film => <li key={film}>{film}</li>)}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Species: {findSpecies(characters[charID].species[0])}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Vehicles: {findVehicles(characters[charID].vehicles).map(vehicle => <li key={vehicle}>{vehicle}</li>)}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Starships: {findStarships(characters[charID].starships).map(starship => <li key={starship}>{starship}</li>)}</p>
                         </div>
                     </div>
@@ -280,28 +280,28 @@ const SingleSearch = ({ characters, planets, films, vehicles, species, starships
                 <h1 className='title is-2' style={{textAlign: 'center', color: theme.text_color}}>Species</h1>
                 <div className='container'>
                     <div className='columns is-multiline' style={{color: theme.text_color}}>
-                        <div className='column is-3'>
+                        <div className='column is-3 ' style={{textAlign: 'center'}}>
                             <p>Name: {species[charID].name}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Classification: {species[charID].classification}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Average Height: {species[charID].average_height}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Skin Colors: {species[charID].skin_colors}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Eye Colors: {species[charID].eye_colors}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Average Lifespan: {species[charID].average_lifespan}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Home World: {findPlanet(species[charID].homeworld)}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Language: {species[charID].language}</p>
                         </div>
                     </div>
@@ -313,28 +313,28 @@ const SingleSearch = ({ characters, planets, films, vehicles, species, starships
                 <h1 className='title is-2' style={{textAlign: 'center', color: theme.text_color}}>Vehicle</h1>
                 <div className='container'>
                     <div className='columns is-multiline' style={{color: theme.text_color}}>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Name: {vehicles[charID].name}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Model: {vehicles[charID].model}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Manufacturer: {vehicles[charID].manufacturer}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Cost: {vehicles[charID].cost_in_credits} credits</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Max speed: {vehicles[charID].max_atmosphering_speed}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Passenger Capacity: {vehicles[charID].passengers}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Pilots: {findCharacter(vehicles[charID].pilots).map(pilot => <li key={pilot}>{pilot}</li>)}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Films Seen: {findFilm(vehicles[charID].films).map(film => <li key={film}>{film}</li>)}</p>
                         </div>
                     </div>
@@ -346,28 +346,28 @@ const SingleSearch = ({ characters, planets, films, vehicles, species, starships
                 <h1 className='title is-2' style={{textAlign: 'center', color: theme.text_color}}>Starship</h1>
                 <div className='container'>
                     <div className='columns is-multiline' style={{color: theme.text_color}}>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Name: {starships[charID].name}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Model: {starships[charID].model}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Manufacturer: {starships[charID].manufacturer}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Cost: {starships[charID].cost_in_credits} credits</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Max speed: {starships[charID].max_atmosphering_speed}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Crew Count: {starships[charID].crew}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Passengers: {starships[charID].passengers}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Hyperdrive Rating: {starships[charID].hyperdrive_rating}</p>
                         </div>
                     </div>
@@ -379,28 +379,28 @@ const SingleSearch = ({ characters, planets, films, vehicles, species, starships
                 <h1 className='title is-2' style={{textAlign: 'center', color: theme.text_color}}>Planet</h1>
                 <div className='container'>
                     <div className='columns is-multiline' style={{color: theme.text_color}}>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Name: {planets[charID].name}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Diameter: {planets[charID].diameter}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Climate: {planets[charID].climate}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Gravity: {planets[charID].gravity}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Terrain: {planets[charID].terrain}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Population: {planets[charID].population}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Known Residents: {findCharacter(planets[charID].residents).map(resident => <li key={resident}>{resident}</li>)}</p>
                         </div>
-                        <div className='column is-3'>
+                        <div className='column is-3' style={{textAlign: 'center'}}>
                             <p>Films Seen: {findFilm(planets[charID].films).map(film => <li key={film}>{film}</li>)}</p>
                         </div>
                     </div>
