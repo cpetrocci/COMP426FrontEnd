@@ -205,40 +205,40 @@ const SingleSearch = ({ characters, planets, films, vehicles, species, starships
             type === 'character' ?
             <div className='container'>
                 <div className='columns is-multiline'>
-                    <div className='column is-2'>
+                    <div className='column is-3'>
                         <p>Name: {characters[charID].name}</p>
                     </div>
-                    <div className='column is-2'>
+                    <div className='column is-3'>
                         <p>Height: {characters[charID].height}</p>
                     </div>
-                    <div className='column is-2'>
+                    <div className='column is-3'>
                         <p>Mass: {characters[charID].mass}</p>
                     </div>
-                    <div className='column is-2'>
+                    <div className='column is-3'>
                         <p>Hair Color: {characters[charID].hair_color}</p>
                     </div>
-                    <div className='column is-2'>
+                    <div className='column is-3'>
                         <p>Skin Color: {characters[charID].skin_color}</p>
                     </div>
-                    <div className='column is-2'>
+                    <div className='column is-3'>
                         <p>Birth Year: {characters[charID].birth_year}</p>
                     </div>
-                    <div className='column is-2'>
+                    <div className='column is-3'>
                         <p>Gender: {characters[charID].gender}</p>
                     </div>
-                    <div className='column is-2'>
+                    <div className='column is-3'>
                         <p>Home Planet: {findPlanet(characters[charID].homeworld)}</p>
                     </div>
-                    <div className='column is-2'>
+                    <div className='column is-3'>
                         <p>Films: {findFilm(characters[charID].films).map(film => <li>{film}</li>)}</p>
                     </div>
-                    <div className='column is-2'>
+                    <div className='column is-3'>
                         <p>Species: {findSpecies(characters[charID].species[0])}</p>
                     </div>
-                    <div className='column is-2'>
+                    <div className='column is-3'>
                         <p>Vehicles: {findVehicles(characters[charID].vehicles).map(vehicle => <li>{vehicle}</li>)}</p>
                     </div>
-                    <div className='column is-2'>
+                    <div className='column is-3'>
                         <p>Starships: {findStarships(characters[charID].starships).map(starship => <li>{starship}</li>)}</p>
                     </div>
                 </div>
