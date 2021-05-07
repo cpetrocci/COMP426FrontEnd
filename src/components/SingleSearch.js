@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 
-const SingleSearch = ({ characters, planets, films, vehicles, species, starships }) => {
+const SingleSearch = ({ characters, planets, films, vehicles, species, starships, theme }) => {
     const [text, setText] = useState('');
     const [charID, setCharID] = useState(null);
     const[type, setType] = useState('');
@@ -189,22 +189,22 @@ const SingleSearch = ({ characters, planets, films, vehicles, species, starships
 
 
     return(
-        <div className = 'box'>
-            <h1 className='title is-2' style={{textAlign: 'center'}}>Learn more about your favorite Star Wars characters!</h1>
-            <p>Type your characters name here:</p>
-            <input style={{backgroundColor: 'darkgray', color: 'white'}} 
+        <div className='box' style={{backgroundColor: theme.first}}>
+            <h1 className='title is-2' style={{textAlign: 'center', color: theme.text_color}}>Learn more about your favorite Star Wars characters!</h1>
+            <p style={{color: theme.text_color}}>Type your characters name here:</p>
+            <input style={{backgroundColor: theme.text_box, color: 'white'}} 
             value={text}  
             onChange={(e) => setText(e.target.value)} 
             className='input' type='text' 
             onKeyUp={e => setType(submit(e))}></input>
             { type === '' ?
-            <div>
+            <div style ={{color: theme.text_color}}>
                 Search here!
             </div>
             :
             type === 'character' ?
             <div className='container'>
-                <div className='columns is-multiline'>
+                <div className='columns is-multiline' style={{color: theme.text_color}}>
                     <div className='column is-3'>
                         <p>Name: {characters[charID].name}</p>
                     </div>
@@ -230,23 +230,23 @@ const SingleSearch = ({ characters, planets, films, vehicles, species, starships
                         <p>Home Planet: {findPlanet(characters[charID].homeworld)}</p>
                     </div>
                     <div className='column is-3'>
-                        <p>Films: {findFilm(characters[charID].films).map(film => <li>{film}</li>)}</p>
+                        <p>Films: {findFilm(characters[charID].films).map(film => <li key={film}>{film}</li>)}</p>
                     </div>
                     <div className='column is-3'>
                         <p>Species: {findSpecies(characters[charID].species[0])}</p>
                     </div>
                     <div className='column is-3'>
-                        <p>Vehicles: {findVehicles(characters[charID].vehicles).map(vehicle => <li>{vehicle}</li>)}</p>
+                        <p>Vehicles: {findVehicles(characters[charID].vehicles).map(vehicle => <li key={vehicle}>{vehicle}</li>)}</p>
                     </div>
                     <div className='column is-3'>
-                        <p>Starships: {findStarships(characters[charID].starships).map(starship => <li>{starship}</li>)}</p>
+                        <p>Starships: {findStarships(characters[charID].starships).map(starship => <li key={starship}>{starship}</li>)}</p>
                     </div>
                 </div>
             </div>
 
             : type === 'film' ?
             <div className='container'>
-                <div className='columns is-multiline'>
+                <div className='columns is-multiline' style={{color: theme.text_color}}>
                     <div className='column is-2'>
                         <p>Title: {films[charID].title}</p>
                     </div>
@@ -257,10 +257,10 @@ const SingleSearch = ({ characters, planets, films, vehicles, species, starships
                         <p>Opening Crawl: {films[charID].opening_crawl}</p>
                     </div>
                     <div className='column is-3'>
-                        <p>Characters: {findCharacter(films[charID].characters).map(character => <li>{character}</li>)}</p>
+                        <p>Characters: {findCharacter(films[charID].characters).map(character => <li key={character}>{character}</li>)}</p>
                     </div>
                     <div className='column is-2'>
-                        <p>Planets Visited: {findPlanets(films[charID].planets).map(planet => <li>{planet}</li>)}</p>
+                        <p>Planets Visited: {findPlanets(films[charID].planets).map(planet => <li key={planet}>{planet}</li>)}</p>
                     </div>
                     <div className='column is-2'>
                         <p>Release Date: {films[charID].release_date}</p>
@@ -270,7 +270,7 @@ const SingleSearch = ({ characters, planets, films, vehicles, species, starships
 
             : type === 'species' ?
             <div className='container'>
-                <div className='columns is-multiline'>
+                <div className='columns is-multiline' style={{color: theme.text_color}}>
                     <div className='column is-3'>
                         <p>Name: {species[charID].name}</p>
                     </div>
@@ -300,7 +300,7 @@ const SingleSearch = ({ characters, planets, films, vehicles, species, starships
 
             : type === 'vehicle' ?
             <div className='container'>
-                <div className='columns is-multiline'>
+                <div className='columns is-multiline' style={{color: theme.text_color}}>
                     <div className='column is-3'>
                         <p>Name: {vehicles[charID].name}</p>
                     </div>
@@ -320,17 +320,17 @@ const SingleSearch = ({ characters, planets, films, vehicles, species, starships
                         <p>Passenger Capacity: {vehicles[charID].passengers}</p>
                     </div>
                     <div className='column is-3'>
-                        <p>Pilots: {findCharacter(vehicles[charID].pilots).map(pilot => <li>{pilot}</li>)}</p>
+                        <p>Pilots: {findCharacter(vehicles[charID].pilots).map(pilot => <li key={pilot}>{pilot}</li>)}</p>
                     </div>
                     <div className='column is-3'>
-                        <p>Films Seen: {findFilm(vehicles[charID].films).map(film => <li>{film}</li>)}</p>
+                        <p>Films Seen: {findFilm(vehicles[charID].films).map(film => <li key={film}>{film}</li>)}</p>
                     </div>
                 </div>
             </div>
 
             : type === 'starship' ?
             <div className='container'>
-                <div className='columns is-multiline'>
+                <div className='columns is-multiline' style={{color: theme.text_color}}>
                     <div className='column is-3'>
                         <p>Name: {starships[charID].name}</p>
                     </div>
@@ -360,7 +360,7 @@ const SingleSearch = ({ characters, planets, films, vehicles, species, starships
 
             : type === 'planet' ?
             <div className='container'>
-                <div className='columns is-multiline'>
+                <div className='columns is-multiline' style={{color: theme.text_color}}>
                     <div className='column is-3'>
                         <p>Name: {planets[charID].name}</p>
                     </div>
@@ -380,10 +380,10 @@ const SingleSearch = ({ characters, planets, films, vehicles, species, starships
                         <p>Population: {planets[charID].population}</p>
                     </div>
                     <div className='column is-3'>
-                        <p>Known Residents: {findCharacter(planets[charID].residents).map(resident => <li>{resident}</li>)}</p>
+                        <p>Known Residents: {findCharacter(planets[charID].residents).map(resident => <li key={resident}>{resident}</li>)}</p>
                     </div>
                     <div className='column is-3'>
-                        <p>Films Seen: {findFilm(planets[charID].films).map(film => <li>{film}</li>)}</p>
+                        <p>Films Seen: {findFilm(planets[charID].films).map(film => <li key={film}>{film}</li>)}</p>
                     </div>
                 </div>
             </div>

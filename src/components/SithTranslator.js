@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import axios from 'axios'
 
-const SithTranslator = () => {
+const SithTranslator = ({ theme }) => {
     const [text, setText] = useState('');
     const [translated, setTranslated] = useState(false);
     const [translation, setTranslation] = useState('');
@@ -30,10 +30,10 @@ const SithTranslator = () => {
         }
     }
     return (
-        <div className='box'>
-            <h1 className='title is-4'>Translate from English to Sith!</h1>
-            <input onKeyDown={async (e) => await onClick(e)} className='input' type='text' placeholder='Translate here' value={text} onChange={(e) => setText(e.target.value)} ></input>
-            {translated && <p>{translation}</p>}
+        <div className='box' style={{backgroundColor: theme.first}}>
+            <h1 className='title is-4' style={{color: theme.text_color}}>Translate from English to Sith!</h1>
+            <input style={{backgroundColor: theme.text_box, color: 'white'}} onKeyDown={async (e) => await onClick(e)} className='input' type='text' value={text} onChange={(e) => setText(e.target.value)} ></input>
+            {translated && <p style={{color: theme.text_color}}>{translation}</p>}
         </div>
     )
 }

@@ -7,6 +7,9 @@ import Button from './components/Button';
 import FavoritesSelector from './components/FavoritesSelector';
 import SithTranslator from './components/SithTranslator';
 import SingleSearch from './components/SingleSearch';
+import './app.css';
+
+
 
 function App() {
   const [showSignUp, setShowSignUp] = useState(false);
@@ -280,6 +283,7 @@ function App() {
 
   return (
     <div>
+      {document.body.style.backgroundColor = 'gray'}
       {((showLogIn || showSignUp) && !loggedIn) && <Button className='button is-warning' onClick={logOut} text='Go Back'/>}
       {!loggedIn ?
       <section className='section' style={{padding: '150px', textAlign: 'center'}}>
@@ -313,23 +317,26 @@ function App() {
         </div>
       </section>: 
       <div>
-        <div className='box'>
-          <SithTranslator />
-          <SingleSearch characters={characters} planets={planets} films={films} vehicles={vehicles} species={species} starships={starships} />
-          <SignedIn user={user} logOut={logOut}/>
-          <h1 className='title is-2' style={{textAlign: 'center'}}>Select all of your favorite things Star Wars!</h1>
+        {document.body.style.backgroundColor = theme.second}
+        <SithTranslator theme={theme}/>
+        <SingleSearch characters={characters} planets={planets} films={films} vehicles={vehicles} species={species} starships={starships} theme={theme} />
+        <div className='box' style={{backgroundColor: theme.first}}>
+          <SignedIn user={user} logOut={logOut} theme={theme}/>
+          <h1 className='title is-2' style={{textAlign: 'center', color: theme.text_color}}>Select all of your favorite things Star Wars!</h1>
           {theme.first.includes('black') ? 
-          <Button text='Switch to the Light Side' className='button is-info is-large' onClick={async () => { await updateUserTheme(user.username, 2); setTheme(await getTheme(2)); updateUser()}}/>
+          <Button text='Switch to the Light Side' className='button is-large' onClick={async () => { await updateUserTheme(user.username, 2); setTheme(await getTheme(2)); updateUser()}}/>
           :
-          <Button className='button is-danger is-large' text='Switch to the Dark Side' onClick={async () => {await updateUserTheme(user.username, 1); setTheme(await getTheme(1)); updateUser()}}/>}
+          <Button className='button is-large' text='Switch to the Dark Side' onClick={async () => {await updateUserTheme(user.username, 1); setTheme(await getTheme(1)); updateUser()}}/>}
         </div>
-        <div className='columns is-multiline' style = {{padding: '20px'}}>
-          <FavoritesSelector currentFavorite={favorites.character} list={characters} type='Character' theme={theme} updateFavorites={updateCharacter}/>
-          <FavoritesSelector currentFavorite={favorites.film} list={films} type='Film' theme={theme} updateFavorites={updateFilm}/>
-          <FavoritesSelector currentFavorite={favorites.starship} list={starships} type='Starship' theme={theme} updateFavorites={updateStarship}/>
-          <FavoritesSelector currentFavorite={favorites.vehicle} list={vehicles} type='Vehicle' theme={theme} updateFavorites={updateVehicle}/>
-          <FavoritesSelector currentFavorite={favorites.species} list={species} type='Species' theme={theme} updateFavorites={updateSpecies}/>
-          <FavoritesSelector currentFavorite={favorites.planet} list={planets} type='Planet' theme={theme} updateFavorites={updatePlanet}/>
+        <div className ='box' style={{backgroundColor: theme.first}}>
+          <div className='columns is-multiline' style = {{padding: '20px'}}>
+            <FavoritesSelector currentFavorite={favorites.character} list={characters} type='Character' theme={theme} updateFavorites={updateCharacter}/>
+            <FavoritesSelector currentFavorite={favorites.film} list={films} type='Film' theme={theme} updateFavorites={updateFilm}/>
+            <FavoritesSelector currentFavorite={favorites.starship} list={starships} type='Starship' theme={theme} updateFavorites={updateStarship}/>
+            <FavoritesSelector currentFavorite={favorites.vehicle} list={vehicles} type='Vehicle' theme={theme} updateFavorites={updateVehicle}/>
+            <FavoritesSelector currentFavorite={favorites.species} list={species} type='Species' theme={theme} updateFavorites={updateSpecies}/>
+            <FavoritesSelector currentFavorite={favorites.planet} list={planets} type='Planet' theme={theme} updateFavorites={updatePlanet}/>
+          </div>
         </div>
       </div>
       
