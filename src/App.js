@@ -25,14 +25,12 @@ function App() {
   const [species, setSpecies] = useState([]);
   const [planets, setPlanets] = useState([]);
 
-
-
-
   const getTheme = async (tid) => {
     const res = await axios({
       method: 'get',
       url: 'https://colepetrocci.pythonanywhere.com/theme/' + tid
     });
+    document.body.style.backgroundColor = res.data.second;
     return res.data;
   }
 
@@ -50,6 +48,8 @@ function App() {
       url: 'https://colepetrocci.pythonanywhere.com/user/' + userText
     });
     await updateUserTheme(userText, tid);
+    const temp = await getTheme(tid);
+    document.body.style.backgroundColor = temp.second;
     setTheme(await getTheme(tid));
     setFavorites(await getFavorites(res.data.id));
     setUser(res.data);
@@ -61,6 +61,8 @@ function App() {
       method: 'get',
       url: 'https://colepetrocci.pythonanywhere.com/user/' + userText,
     });
+    const temp = await getTheme(res.data.tid);
+    document.body.style.backgroundColor = temp.second;
     setTheme(await getTheme(res.data.tid));
     setFavorites(await getFavorites(res.data.id));
     setUser(res.data);
@@ -92,6 +94,7 @@ function App() {
     setUser(null);
     setTheme(null)
     setFavorites(null);
+    document.body.style.backgroundColor = 'gray';
   }
 
   const getSWCharacters = async (url, arr, int) => {
@@ -273,6 +276,7 @@ function App() {
 
   useEffect(() => {
     (async () => {
+      document.body.style.backgroundColor = 'gray'
       await getSWCharacters('https://swapi.dev/api/people/', [], 2)
       await getSWFilms('https://swapi.dev/api/films/', [], 2)
       await getSWStarships('https://swapi.dev/api/starships/', [], 2)
@@ -283,7 +287,6 @@ function App() {
 
   return (
     <div>
-      {document.body.style.backgroundColor = 'gray'}
       {((showLogIn || showSignUp) && !loggedIn) && <Button className='button is-warning' onClick={logOut} text='Go Back'/>}
       {!loggedIn ?
       <section className='section' style={{padding: '150px', textAlign: 'center'}}>
@@ -317,7 +320,6 @@ function App() {
         </div>
       </section>: 
       <div>
-        {document.body.style.backgroundColor = theme.second}
         <SithTranslator theme={theme}/>
         <SingleSearch characters={characters} planets={planets} films={films} vehicles={vehicles} species={species} starships={starships} theme={theme} />
         <div className='box' style={{backgroundColor: theme.first}}>
