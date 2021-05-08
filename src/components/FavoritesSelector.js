@@ -34,6 +34,7 @@ const FavoritesSelector = ({ currentFavorite, list, updateFavorites, type, theme
 
     const submit = (e, bool) => {
         let found = false;
+        let res = '';
 
         if (bool) {
             if (type.includes('Film')) {
@@ -60,20 +61,22 @@ const FavoritesSelector = ({ currentFavorite, list, updateFavorites, type, theme
         if (e.keyCode === 13) {
             if (type.includes('Film')) {
                 list.forEach(item => {
-                    if (item.title === text) {
+                    if (item.title.toLowerCase() === text.toLowerCase()) {
+                        res = item.title;
                         found = true;
                     }
                 })
             }
             else {
                 list.forEach(item => {
-                    if (item.name === text) {
+                    if (item.name.toLowerCase() === text.toLowerCase()) {
                         found = true;
+                        res = item.name;
                     }
                 })
             }
             if (found) {
-                updateFavorites(text);
+                updateFavorites(res);
                 setText('');
                 setMatches([]);
                 return;
