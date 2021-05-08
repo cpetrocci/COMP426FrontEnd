@@ -8,6 +8,8 @@ const LoginForm = ({logIn}) => {
     const [signInFailedText, setsignInFailedText] = useState('');
     const [userText, setUserText] = useState('');
     const [passwordText, setPasswordText] = useState('');
+    const [hiddenText,  setHiddenText] = useState('');
+
     const submit = async () => {
         if (userText === '' || passwordText === '') {
             setsignInFailedText('Username and/or password cannot be blank.');
@@ -22,7 +24,7 @@ const LoginForm = ({logIn}) => {
             if (res.data.username === userText && res.data.password === passwordText) {
                 logIn(userText);
             } else {
-                setsignInFailedText('Incorrect username and/or password. Please try again.')
+                setsignInFailedText('Incorrect password. Please try again.')
                 setsignInFailed(true);
             }
         } else {
@@ -39,7 +41,33 @@ const LoginForm = ({logIn}) => {
             {signInFailed && <p className="has-text-danger">{signInFailedText}</p>}
             <label className='label'>Password</label>
             <div className='control' style={{padding: '10px'}}>
-                <input className='input' type='text' placeholder='Password' value={passwordText} onChange={(e) => setPasswordText(e.target.value)} ></input>
+                <input className='input' type='text' placeholder='Password' value={hiddenText} 
+                onChange={(e) => setPasswordText(previous => {
+                    if (e.target.value.split('').length < hiddenText.split('').length) {
+                        let temp = previous.split('');
+                        let pass = '';
+                        let hiddenPass = '';
+                        let count = 0;
+                        temp.forEach( char => {
+                            if(count === temp.length - 1) {
+                                return;
+                            }
+                            pass += char;
+                            hiddenPass += '*';
+                            count++;
+                        })
+                        setHiddenText(hiddenPass);
+                        return pass;
+                    } else {
+                        let temp = e.target.value.split('');
+                        let pass = '';
+                        temp.forEach(() => {
+                            pass += '*';
+                        })
+                        setHiddenText(pass);
+                        return previous + temp[temp.length - 1];
+                    }
+                    })} ></input>
             </div>
             <div style = {{padding: '10px'}}>
                 <Button className='button is-success' onClick={submit} text='Submit' />

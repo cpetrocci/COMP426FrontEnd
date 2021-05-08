@@ -8,6 +8,7 @@ const SignUpForm = ({ signedUp }) => {
     const [signUpFailedText, setSignUpFailed] = useState('');
     const [userText, setUserText] = useState('');
     const [passwordText, setPasswordText] = useState('');
+    const [hiddenText, setHiddenText] = useState('');
     let tid = 0;
 
     const submit = async () => {
@@ -47,7 +48,33 @@ const SignUpForm = ({ signedUp }) => {
             {signUpFailed && <p className="has-text-danger">{signUpFailedText}</p>}
             <label className='label'>Password</label>
             <div className='control' style={{padding: '10px'}}>
-                <input className='input' type='text' placeholder='Password' value={passwordText} onChange={(e) => setPasswordText(e.target.value)} ></input>
+            <input className='input' type='text' placeholder='Password' value={hiddenText} 
+                onChange={(e) => setPasswordText(previous => {
+                    if (e.target.value.split('').length < hiddenText.split('').length) {
+                        let temp = previous.split('');
+                        let pass = '';
+                        let hiddenPass = '';
+                        let count = 0;
+                        temp.forEach( char => {
+                            if(count === temp.length - 1) {
+                                return;
+                            }
+                            pass += char;
+                            hiddenPass += '*';
+                            count++;
+                        })
+                        setHiddenText(hiddenPass);
+                        return pass;
+                    } else {
+                        let temp = e.target.value.split('');
+                        let pass = '';
+                        temp.forEach(() => {
+                            pass += '*';
+                        })
+                        setHiddenText(pass);
+                        return previous + temp[temp.length - 1];
+                    }
+                    })} ></input>
             </div>
             <Button className='button is-danger' onClick={() => tid = 1} text='The Dark Side'/>
             <Button className='button is-info' onClick={() => tid = 2} text='The Light Side'/>
