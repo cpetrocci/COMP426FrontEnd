@@ -16,7 +16,7 @@ const FavoritesSelector = ({ currentFavorite, list, updateFavorites, type, theme
         if (type.includes('Film')) {
             list.forEach(character => {if(character.title.toLowerCase().includes(currText)){temp.push(character.title)}});
         } else {
-            list.forEach(character => {if(character.name.toLowerCase().includes(currText)){temp.push(character.name + "1")}});
+            list.forEach(character => {if(character.name.toLowerCase().includes(currText)){temp.push(character.name)}});
         }
         if(temp.length === 0) {
             setMatches(['No Matches']);
@@ -37,30 +37,30 @@ const FavoritesSelector = ({ currentFavorite, list, updateFavorites, type, theme
         let found = false;
         let res = '';
 
-        // // Films require the ".title" property, the rest use ".name"
-        // if (bool) {
-        //     if (type.includes('Film')) {
-        //         list.forEach(item => {
-        //             if (item.title === text) {
-        //                 found = true;
-        //             }
-        //         })
-        //     }
-        //     else {
-        //         list.forEach(item => {
-        //             if (item.name === text) {
-        //                 found = true;
-        //             }
-        //         })
-        //     }
-        //     // If the text is found in the list, it becomes their favorite and text/matches are reset
-        //     if (found) {
-        //         updateFavorites(text);
-        //         setText('');
-        //         setMatches([]);
-        //     }
-        //     return;
-        // }
+        // Films require the ".title" property, the rest use ".name"
+        if (bool) {
+            if (type.includes('Film')) {
+                list.forEach(item => {
+                    if (item.title === text) {
+                        found = true;
+                    }
+                })
+            }
+            else {
+                list.forEach(item => {
+                    if (item.name === text) {
+                        found = true;
+                    }
+                })
+            }
+            // If the text is found in the list, it becomes their favorite and text/matches are reset
+            if (found) {
+                updateFavorites(text);
+                setText('');
+                setMatches([]);
+            }
+            return;
+        }
 
         // If the user hits enter
         if (e.keyCode === 13) {
