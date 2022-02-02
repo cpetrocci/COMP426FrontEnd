@@ -10,6 +10,7 @@ const LoginForm = ({logIn}) => {
     const [passwordText, setPasswordText] = useState('');
     const [hiddenText,  setHiddenText] = useState('');
 
+    // Checks log in credentials from DB upon submit
     const submit = async () => {
         if (userText === '' || passwordText === '') {
             setsignInFailedText('Username and/or password cannot be blank.');

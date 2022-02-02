@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 
 
-// Handles the user 
+// Handles the styling of matches
 const FavoritesSelectorItem = ({ match, onClick }) => {
     const [stylePadding, setStylePadding] = useState('1px');
     const [styleBorder, setStyleBorder] = useState('');

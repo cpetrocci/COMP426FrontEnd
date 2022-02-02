@@ -32,12 +32,12 @@ const FavoritesSelector = ({ currentFavorite, list, updateFavorites, type, theme
 
     }
 
-    // Handles while a user is typing
+    // Handles if a user presses enter
     const submit = (e) => {
         let found = false;
         let res = '';
 
-        // If the user hits enter
+        // If the key hit was enter
         if (e.keyCode === 13) {
             if (type.includes('Film')) {
                 list.forEach(item => {

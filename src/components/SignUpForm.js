@@ -11,6 +11,7 @@ const SignUpForm = ({ signedUp }) => {
     const [hiddenText, setHiddenText] = useState('');
     let tid = 0;
 
+    // Checks that there is no prexisting user upon submit, a theme is chosen, and then creates a new user in DB
     const submit = async () => {
         if (userText === '' || passwordText === '') {
             setSignUpFailed('Username and/or password cannot be blank.');

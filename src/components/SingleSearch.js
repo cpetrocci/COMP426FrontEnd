@@ -1,11 +1,13 @@
 import React from 'react'
 import { useState } from 'react'
 
+// Allows users to get more info on any of the six favorites
 const SingleSearch = ({ characters, planets, films, vehicles, species, starships, theme }) => {
     const [text, setText] = useState('');
     const [charID, setCharID] = useState(null);
     const[type, setType] = useState('');
 
+    // Checks if the name entered is in any of the favorites
     const submit = (e) => {
         if(e.key !== 'Enter') return type;
         let currType = 'Not Found';
@@ -74,6 +76,7 @@ const SingleSearch = ({ characters, planets, films, vehicles, species, starships
         } 
         return currType;
     }
+
     const findCharacter = (urls) => {
         let found = ['unknown']
         urls.forEach(url => {
@@ -199,7 +202,6 @@ const SingleSearch = ({ characters, planets, films, vehicles, species, starships
             onKeyUp={e => setType(submit(e))}></input>
             { type === '' ?
             <div style ={{color: theme.text_color}}>
-                
             </div>
             :
             type === 'character' ?
