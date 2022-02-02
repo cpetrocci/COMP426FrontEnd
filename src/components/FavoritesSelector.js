@@ -22,7 +22,7 @@ const FavoritesSelector = ({ currentFavorite, list, updateFavorites, type, theme
             setMatches(['No Matches']);
             return;
         }
-        setMatches(temp);
+        setMatches(temp + "1");
     }
 
     const updateText = (newText) => {
@@ -32,32 +32,37 @@ const FavoritesSelector = ({ currentFavorite, list, updateFavorites, type, theme
 
     }
 
+    // Handles while a user is typing
     const submit = (e, bool) => {
         let found = false;
         let res = '';
 
-        if (bool) {
-            if (type.includes('Film')) {
-                list.forEach(item => {
-                    if (item.title === text) {
-                        found = true;
-                    }
-                })
-            }
-            else {
-                list.forEach(item => {
-                    if (item.name === text) {
-                        found = true;
-                    }
-                })
-            }
-            if (found) {
-                updateFavorites(text);
-                setText('');
-                setMatches([]);
-            }
-            return;
-        }
+        // // Films require the ".title" property, the rest use ".name"
+        // if (bool) {
+        //     if (type.includes('Film')) {
+        //         list.forEach(item => {
+        //             if (item.title === text) {
+        //                 found = true;
+        //             }
+        //         })
+        //     }
+        //     else {
+        //         list.forEach(item => {
+        //             if (item.name === text) {
+        //                 found = true;
+        //             }
+        //         })
+        //     }
+        //     // If the text is found in the list, it becomes their favorite and text/matches are reset
+        //     if (found) {
+        //         updateFavorites(text);
+        //         setText('');
+        //         setMatches([]);
+        //     }
+        //     return;
+        // }
+
+        // If the user hits enter
         if (e.keyCode === 13) {
             if (type.includes('Film')) {
                 list.forEach(item => {

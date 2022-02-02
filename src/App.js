@@ -24,6 +24,7 @@ function App() {
   const [species, setSpecies] = useState([]);
   const [planets, setPlanets] = useState([]);
 
+ // Gets the theme of the user logged in
   const getTheme = async (tid) => {
     const res = await axios({
       method: 'get',
@@ -33,6 +34,7 @@ function App() {
     return res.data;
   }
 
+   // Gets the new user data
   const updateUser = async () => {
     const res = await axios({
       method: 'get',
@@ -41,6 +43,7 @@ function App() {
     setUser(res.data);
   }
 
+   // Gets values of new user
   const signedUp = async ({ userText, tid }) => {
     const res = await axios({
       method: 'get',
@@ -55,6 +58,7 @@ function App() {
     setLoggedIn(true);
   }
 
+   // Gets values of user loggin in
   const logIn = async (userText) => {
     const res = await axios({
       method: 'get',
@@ -68,6 +72,7 @@ function App() {
     setLoggedIn(true);
   }
 
+   // Updates theme of user in DB when changed
   const updateUserTheme = async (userText, tid) => {
     await axios({
       method: 'put',
@@ -78,7 +83,8 @@ function App() {
     });
   }
 
-  const updateShowLogIn = () => {
+  // Two functions control what menus are visible
+  const updateShowLogIn = () => { 
     setShowLogIn(previous => !previous);
   }
 
@@ -86,6 +92,7 @@ function App() {
     setShowSignUp(previous => !previous);
   }
 
+   // Resets all values when user logs out
   const logOut = () => {
     setShowSignUp(false);
     setShowLogIn(false);
@@ -96,6 +103,7 @@ function App() {
     document.body.style.backgroundColor = 'gray';
   }
 
+  // Next 6 functions fetch data from the SW API
   const getSWCharacters = async (url, arr, int) => {
     const res = await axios({
       method: 'get',
@@ -174,6 +182,8 @@ function App() {
     let newUrl = 'https://swapi.dev/api/planets/?page=' + int;
     getSWPlanets(newUrl, arr, int + 1);
   }
+
+  // Gets list of favorites from the UserDB
   const getFavorites = async(id) => {
     const res = await axios({
       method: 'get',
@@ -182,6 +192,7 @@ function App() {
     return res.data;
   }
 
+  // Next 6 functions update the data in the DB when user selects a favorite
   const updateCharacter = async(fav) => {
     await axios({
       method: 'put',
@@ -273,6 +284,7 @@ function App() {
     setFavorites(await getFavorites(user.id));
   }
 
+  // Calls functions that get SW API info on launch of site
   useEffect(() => {
     (async () => {
       document.body.style.backgroundColor = 'gray'
@@ -345,12 +357,6 @@ function App() {
           </div>
         </div>
       </div>
-      
-      
-      
-      
-      
-      
       }
     </div>
   );
