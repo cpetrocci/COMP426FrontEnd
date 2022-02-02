@@ -33,34 +33,9 @@ const FavoritesSelector = ({ currentFavorite, list, updateFavorites, type, theme
     }
 
     // Handles while a user is typing
-    const submit = (e, bool) => {
+    const submit = (e) => {
         let found = false;
         let res = '';
-
-        // Films require the ".title" property, the rest use ".name"
-        if (bool) {
-            if (type.includes('Film')) {
-                list.forEach(item => {
-                    if (item.title === text) {
-                        found = true;
-                    }
-                })
-            }
-            else {
-                list.forEach(item => {
-                    if (item.name === text) {
-                        found = true;
-                    }
-                })
-            }
-            // If the text is found in the list, it becomes their favorite and text/matches are reset
-            if (found) {
-                updateFavorites(text);
-                setText('');
-                setMatches([]);
-            }
-            return;
-        }
 
         // If the user hits enter
         if (e.keyCode === 13) {
@@ -96,7 +71,7 @@ const FavoritesSelector = ({ currentFavorite, list, updateFavorites, type, theme
               <h1 className='title is-6' style={{color: theme.first === 'black' ? 'black': 'white'}}>{currentFavorite === null ? 'None': currentFavorite}</h1>
               <input style={{backgroundColor: theme.text_box, color: 'white'}} className='input' type='text' value={text}
               onChange={(e) => {setText(e.target.value); search(e.target.value)}}
-              onKeyDown={(e) => submit(e, false)}></input>
+              onKeyDown={(e) => submit(e)}></input>
               {matches.length === 0 ? 
               <div></div>
               :
